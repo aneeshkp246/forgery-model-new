@@ -2,4 +2,5 @@ flask
 flask-cors
 tensorflow
 pillow
+gunicorn
 numpy
