@@ -1,20 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: deepfake-backend
+  labels:
+    app: deepfake-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: deepfake-backend
   template:
     metadata:
       labels:
-        app: backend
+        app: deepfake-backend
     spec:
       containers:
-        - name: backend
-          image: deepfake-backend:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 5000
+      - name: backend
+        image: deepfake-backend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"

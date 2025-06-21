@@ -1,20 +1,18 @@
-version: '3.8'
+version: '3'
 
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:5000
+    depends_on:
+      - backend
+
   backend:
     build: ./backend
-    container_name: deepfake-backend
     ports:
       - "5000:5000"
     volumes:
-      - ./backend:/app
-    restart: unless-stopped
-
-  frontend:
-    build: ./forgery_detection_app  
-    container_name: deepfake-frontend
-    ports:
-      - "3000:80"
-    restart: unless-stopped
-    depends_on:
-      - backend
+      - ./backend/final_model.h5:/app/final_model.h5

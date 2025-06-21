@@ -6,7 +6,7 @@ import tensorflow as tf
 import io
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=['*'])
 
 # Load your trained model (adjust path if needed)
 model = tf.keras.models.load_model('final_model.h5')  # change this to your actual model path

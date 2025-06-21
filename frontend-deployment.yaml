@@ -1,20 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: deepfake-frontend
+  labels:
+    app: deepfake-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: deepfake-frontend
   template:
     metadata:
       labels:
-        app: frontend
+        app: deepfake-frontend
     spec:
       containers:
-        - name: frontend
-          image: deepfake-frontend:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
+      - name: frontend
+        image: deepfake-frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_API_URL
+          value: "http://deepfake-backend:5000"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi" 
+            cpu: "500m"
