@@ -8,8 +8,8 @@ import io
 app = Flask(__name__)
 CORS(app, origins=['*'])
 
-# Load your trained model (adjust path if needed)
-model = tf.keras.models.load_model('final_model.h5')  # change this to your actual model path
+# Load your trained model here
+model = tf.keras.models.load_model('final_model.h5')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -21,7 +21,6 @@ def predict():
         if file.filename == '':
             return jsonify({"error": "No file selected"}), 400
 
-        # Read and preprocess image - CHANGED: resize to 256x256 instead of 224x224
         image = Image.open(io.BytesIO(file.read())).convert("RGB")
         image = image.resize((256, 256))  # Match your model's expected input size
         image = np.array(image).astype("float32") / 255.0
@@ -44,7 +43,6 @@ def predict():
         print("Error during prediction:", e)
         return jsonify({"error": str(e)}), 500
 
-# Optional: handle GET /favicon.ico to avoid log clutter
 @app.route('/favicon.ico')
 def favicon():
     return '', 204
