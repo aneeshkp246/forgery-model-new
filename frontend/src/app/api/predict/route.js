@@ -1,6 +1,6 @@
 export async function POST(req) {
   try {
-    const backendRes = await fetch('http://deepfake-backend:5000/predict', {
+    const backendRes = await fetch('http://backend-service:5000/predict', {
       method: 'POST',
       headers: {
         ...Object.fromEntries(

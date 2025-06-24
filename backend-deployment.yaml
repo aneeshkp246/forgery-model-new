@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deepfake-backend
+  name: backend-deployment
   labels:
     app: deepfake-backend
 spec:
