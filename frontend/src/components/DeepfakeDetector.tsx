@@ -41,7 +41,17 @@ const DeepfakeDetector = () => {
       
       const data = await res.json();
       console.log('Prediction result:', data);
-      setResult(data);
+      
+      // Process the result based on confidence score
+      let processedResult = { ...data };
+      
+      if (typeof data.confidence === 'number' && data.confidence < 0.05) {
+        // If confidence is less than 5%, label as fake and adjust confidence
+        processedResult.label = 'Fake';
+        processedResult.confidence = 1 - data.confidence; // 100 - x in decimal form
+      }
+      
+      setResult(processedResult);
     } catch (err) {
       console.error('Prediction error:', err);
       const errorMessage = err instanceof Error ? err.message : String(err);
