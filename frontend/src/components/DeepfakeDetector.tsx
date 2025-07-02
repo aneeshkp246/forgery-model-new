@@ -214,7 +214,7 @@ const DeepfakeDetector = () => {
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
     link.setAttribute('href', url);
-    link.setAttribute('download', 'deepfake_predictions.csv');
+    link.setAttribute('download', 'forgery_predictions.csv');
     link.style.visibility = 'hidden';
     document.body.appendChild(link);
     link.click();
@@ -236,8 +236,8 @@ const DeepfakeDetector = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">🕵️‍♂️ Deepfake Image Detector</h1>
-          <p className="text-gray-600">Upload images to detect if they're real or AI-generated</p>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">🕵️‍♂️ Image Forgery & Deepfake Detector</h1>
+          <p className="text-gray-600">Upload images to detect if they're Authentic, Forged or Deepfaked</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
@@ -286,7 +286,7 @@ const DeepfakeDetector = () => {
                   {uploadMode === 'zip' && 'Click to upload a ZIP file'}
                 </p>
                 <p className="text-sm text-gray-400">
-                  {uploadMode === 'zip' ? 'ZIP files containing images' : 'PNG, JPG, JPEG up to 10MB each'}
+                  {uploadMode === 'zip' ? 'ZIP files containing images' : 'PNG, JPG, JPEG up to 5MB each'}
                 </p>
               </div>
             </label>

@@ -3,21 +3,21 @@ kind: Deployment
 metadata:
   name: backend-deployment
   labels:
-    app: deepfake-backend
+    app: forgery-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: deepfake-backend
+      app: forgery-backend
   template:
     metadata:
       labels:
-        app: deepfake-backend
+        app: forgery-backend
     spec:
       containers:
       - name: backend
-        image: deepfake-backend:latest
-        imagePullPolicy: IfNotPresent
+        image: forgery-backend:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
         resources:
