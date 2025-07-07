@@ -10,7 +10,7 @@ export async function POST(req) {
         ),
       },
       body: req.body,
-      duplex: 'half',
+      duplex: 'half', 
     });
 
     const result = await backendRes.json();

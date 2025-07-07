@@ -1,5 +1,5 @@
-import DeepfakeDetector from '../components/DeepfakeDetector';
+import ForgeryDetector from '../components/ForgeryDetector';
 
 export default function Home() {
-  return <DeepfakeDetector />;
+  return <ForgeryDetector />;
 }
