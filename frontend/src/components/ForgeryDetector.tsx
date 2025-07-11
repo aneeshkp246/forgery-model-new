@@ -131,16 +131,12 @@ const ForgeryDetector = () => {
     formData.append('image', imageData.file);
 
     try {
-      // Get the API URL - either from environment or use deepfake-backend
-      let apiUrl = "http://localhost:5000"
+      let apiUrl = "/api/predict"
       console.log('Using API URL:', apiUrl);
       
-      const res = await fetch(`${apiUrl}/predict`, {
+      const res = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
-        headers: {
-          'Accept': 'application/json',
-        },
       });
       
       if (!res.ok) {

@@ -16,14 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: forgery-backend:latest
-        imagePullPolicy: Never
+        image: forgeryacr.azurecr.io/forgery-backend:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 5000
-        resources:
-          requests:
-            memory: "2Gi"
-            cpu: "1000m"   
-          limits:
-            memory: "4Gi"
-            cpu: "2000m"  
+        - containerPort: 5000 

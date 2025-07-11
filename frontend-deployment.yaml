@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: forgery-frontend:latest
-        imagePullPolicy: Never
+        image: forgeryacr.azurecr.io/forgery-frontend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         resources:
